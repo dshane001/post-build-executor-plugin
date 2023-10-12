@@ -50,13 +50,4 @@ class PostBuildExecutorPluginService {
         // replace if exists
         return postBuildCommand.replace("\$module", moduleDir) // get the module
     }
-
-    private fun getModuleOption(project: Project): String {
-        val fileEditorManager = FileEditorManager.getInstance(project)
-        val virtualFile = fileEditorManager.selectedFiles.firstOrNull() ?: return ""
-        val module = ProjectRootManager.getInstance(project).fileIndex.getModuleForFile(virtualFile) ?: return ""
-        val moduleDir = module.guessModuleDir() ?: return ""
-
-        return " -m " + moduleDir.name
-    }
 }

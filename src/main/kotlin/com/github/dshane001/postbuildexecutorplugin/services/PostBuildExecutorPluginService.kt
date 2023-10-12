@@ -34,19 +34,20 @@ class PostBuildExecutorPluginService {
                     else -> TerminalToolWindowManager.getWidgetByContent(content) as ShellTerminalWidget
                 }
 
-                widget.executeCommand(settings.postBuildCommand + getModuleOption(project))
+                widget.executeCommand(getCommand(settings.postBuildCommand, project))
             } catch (e: IOException) {
                 thisLogger().error("Cannot run command in local terminal. Error: ", e)
             }
         }
     }
 
-    private fun getModuleOption(project: Project): String {
+    private fun getCommand(postBuildCommand: String, project: Project): String {
         val fileEditorManager = FileEditorManager.getInstance(project)
         val virtualFile = fileEditorManager.selectedFiles.firstOrNull() ?: return ""
         val module = ProjectRootManager.getInstance(project).fileIndex.getModuleForFile(virtualFile) ?: return ""
-        val moduleDir = module.guessModuleDir() ?: return ""
+        val moduleDir: String = module.guessModuleDir()?.name ?: ""
 
-        return " -m " + moduleDir.name
+        // replace if exists
+        return postBuildCommand.replace("\$module", moduleDir) // get the module
     }
 }

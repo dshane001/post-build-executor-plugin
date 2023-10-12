@@ -12,7 +12,7 @@
     <extensions defaultExtensionNs="com.intellij">
         <applicationConfigurable parentId="tools" instance="com.github.dshane001.postbuildexecutorplugin.settings.AppSettingsConfigurable"
                                  id="com.github.dshane001.testtemplate.settings.AppSettingsConfigurable"
-                                 displayName="Vault Hot Deployer"/>
+                                 displayName="Post Build Executor"/>
         <applicationService serviceImplementation="com.github.dshane001.postbuildexecutorplugin.settings.AppSettingsState"/>
     </extensions>
 

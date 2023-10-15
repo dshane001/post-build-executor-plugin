@@ -15,7 +15,7 @@ class AppSettingsConfigurable : Configurable {
     // is registered in an applicationConfigurable EP
     @Nls(capitalization = Nls.Capitalization.Title)
     override fun getDisplayName(): String {
-        return "Command"
+        return "Post Build Executor"
     }
 
     override fun getPreferredFocusedComponent(): JComponent {
@@ -24,22 +24,30 @@ class AppSettingsConfigurable : Configurable {
 
     override fun createComponent(): JComponent {
         mySettingsComponent = AppSettingsComponent()
-        return mySettingsComponent!!.panel
+        return mySettingsComponent!!.myMainPanel
     }
 
     override fun isModified(): Boolean {
         val settings: AppSettingsState = AppSettingsState.getInstance()
-        return mySettingsComponent!!.postBuildCommand != settings.postBuildCommand
+        var modified = false
+        modified = modified || mySettingsComponent!!.postBuildProjectCommand != settings.postBuildProjectCommand
+        modified = modified || mySettingsComponent!!.postBuildModuleCommand != settings.postBuildModuleCommand
+        modified = modified || mySettingsComponent!!.postBuildFileCommand != settings.postBuildFileCommand
+        return modified
     }
 
     override fun apply() {
         val settings: AppSettingsState = AppSettingsState.getInstance()
-        settings.postBuildCommand = mySettingsComponent!!.postBuildCommand
+        settings.postBuildProjectCommand = mySettingsComponent!!.postBuildProjectCommand
+        settings.postBuildModuleCommand = mySettingsComponent!!.postBuildModuleCommand
+        settings.postBuildFileCommand = mySettingsComponent!!.postBuildFileCommand
     }
 
     override fun reset() {
         val settings: AppSettingsState = AppSettingsState.getInstance()
-        mySettingsComponent!!.postBuildCommand = settings.postBuildCommand
+        mySettingsComponent!!.postBuildProjectCommand = settings.postBuildProjectCommand
+        mySettingsComponent!!.postBuildModuleCommand = settings.postBuildModuleCommand
+        mySettingsComponent!!.postBuildFileCommand = settings.postBuildFileCommand
     }
 
     override fun disposeUIResources() {

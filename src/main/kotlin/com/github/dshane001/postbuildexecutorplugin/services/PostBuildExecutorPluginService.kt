@@ -34,7 +34,7 @@ class PostBuildExecutorPluginService {
                     else -> TerminalToolWindowManager.getWidgetByContent(content) as ShellTerminalWidget
                 }
 
-                widget.executeCommand(getCommand(settings.postBuildCommand, project))
+                widget.executeCommand(getCommand(settings.postBuildFileCommand, project))
             } catch (e: IOException) {
                 thisLogger().error("Cannot run command in local terminal. Error: ", e)
             }

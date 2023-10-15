@@ -11,22 +11,38 @@ import javax.swing.JPanel
  * Supports creating and managing a [JPanel] for the Settings Dialog.
  */
 class AppSettingsComponent {
-    val panel: JPanel
-    private val postBuildCommandText = JBTextField()
+    val myMainPanel: JPanel
+    private val postBuildProjectCommandText = JBTextField()
+    private val postBuildModuleCommandText = JBTextField()
+    private val postBuildFileCommandText = JBTextField()
 
     init {
-        panel = FormBuilder.createFormBuilder()
-            .addLabeledComponent(JBLabel("Enter command to execute post build: "), postBuildCommandText, 1, true)
+        myMainPanel = FormBuilder.createFormBuilder()
+            .addLabeledComponent(JBLabel("Command to execute post build (Project): "), postBuildProjectCommandText, 1, true)
+            .addLabeledComponent(JBLabel("Command to execute post build (Module): "), postBuildModuleCommandText, 1, true)
+            .addLabeledComponent(JBLabel("Command to execute post build (File): "), postBuildFileCommandText, 1, true)
             .addComponentFillVertically(JPanel(), 0)
             .panel
     }
 
     val preferredFocusedComponent: JComponent
-        get() = postBuildCommandText
+        get() = postBuildFileCommandText
 
-    var postBuildCommand: String
-        get() = postBuildCommandText.getText()
+    var postBuildProjectCommand: String
+        get() = postBuildProjectCommandText.text
         set(newText) {
-            postBuildCommandText.setText(newText)
+            postBuildProjectCommandText.setText(newText)
+        }
+
+    var postBuildModuleCommand: String
+        get() = postBuildModuleCommandText.text
+        set(newText) {
+            postBuildModuleCommandText.setText(newText)
+        }
+
+    var postBuildFileCommand: String
+        get() = postBuildFileCommandText.text
+        set(newText) {
+            postBuildFileCommandText.setText(newText)
         }
 }

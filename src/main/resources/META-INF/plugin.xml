@@ -21,4 +21,29 @@
                 class="com.github.dshane001.postbuildexecutorplugin.listeners.BuildListener"
                 topic="com.intellij.task.ProjectTaskListener"/>
     </projectListeners>
+
+    <actions>
+        <action id="PostBuildPlugin.BuildProjectAndExecute"
+                class="com.github.dshane001.postbuildexecutorplugin.actions.BuildProjectAndExecuteProjectCommand"
+                text="Build Project And Run Command"
+                description="Builds the project and then executes the post build run command">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <keyboard-shortcut first-keystroke="control shift S" keymap="$default"/>
+        </action>
+        <action id="PostBuildPlugin.BuildModuleAndExecute"
+                class="com.github.dshane001.postbuildexecutorplugin.actions.BuildModuleAndExecuteModuleCommand"
+                text="Build Module and Run Command"
+                description="Builds the active module and runs the post action module command">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <keyboard-shortcut first-keystroke="control shift X" keymap="$default"/>
+        </action>
+        <action id="PostBuildPlugin.BuildFileAndExecute"
+                class="com.github.dshane001.postbuildexecutorplugin.actions.BuildFileAndExecuteFileCommand"
+                text="Recompile File and Run Command"
+                description="Recompiles the current file and runs the post build file command">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <keyboard-shortcut first-keystroke="control shift COMMA" keymap="$default"/>
+        </action>
+    </actions>
+
 </idea-plugin>

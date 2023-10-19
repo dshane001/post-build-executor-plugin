@@ -20,10 +20,6 @@ import java.lang.IllegalStateException
 class PostBuildExecutorPluginService {
     var commandType: CommandType = NONE
 
-//    init {
-//        thisLogger().info(MyBundle.message("projectService", project.name))
-//    }
-
     fun executeCommandInTerminal(project: Project) {
         if (commandType == NONE) {
             return
@@ -31,16 +27,19 @@ class PostBuildExecutorPluginService {
 
         ApplicationManager.getApplication().invokeLater {
             try {
-                val terminalView = TerminalToolWindowManager.getInstance(project)
-                val window = ToolWindowManager.getInstance(project).getToolWindow(TerminalToolWindowFactory.TOOL_WINDOW_ID)
-                val contentManager = window?.contentManager
+                val command = getCommand(commandType, project)
+                if (command.isNotBlank()) {
+                    val terminalView = TerminalToolWindowManager.getInstance(project)
+                    val window = ToolWindowManager.getInstance(project).getToolWindow(TerminalToolWindowFactory.TOOL_WINDOW_ID)
+                    val contentManager = window?.contentManager
 
-                val widget = when (val content = contentManager?.findContent("Post Build Executor")) {
-                    null -> terminalView.createLocalShellWidget(project.basePath, "Post Build Executor")
-                    else -> TerminalToolWindowManager.getWidgetByContent(content) as ShellTerminalWidget
+                    val widget = when (val content = contentManager?.findContent("Post Build Executor")) {
+                        null -> terminalView.createLocalShellWidget(project.basePath, "Post Build Executor")
+                        else -> TerminalToolWindowManager.getWidgetByContent(content) as ShellTerminalWidget
+                    }
+
+                    widget.executeCommand(command)
                 }
-
-                widget.executeCommand(getCommand(commandType, project))
             } catch (e: IOException) {
                 thisLogger().error("Cannot run command in local terminal. Error: ", e)
             } finally {

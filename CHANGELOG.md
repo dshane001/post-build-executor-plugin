@@ -2,17 +2,20 @@
 
 # post-build-executor-plugin Changelog
 
+## 1.0.6
+Updated plugin.xml description
+
 ## 1.0.5
-- Updated plugin.xml description
+Updated plugin.xml description
 
 ## 1.0.4
-- Updated plugin.xml description
+Updated plugin.xml description
 
 ## 1.0.3
-- Updated plugin.xml description
+Updated plugin.xml description
 
 ## 1.0.2
-- Updated plugin.xml description
+Updated plugin.xml description
 
 ## 1.0.1
 Default keymaps changed to these:

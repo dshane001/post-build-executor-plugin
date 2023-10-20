@@ -28,21 +28,21 @@
                 text="Build Project And Run Command"
                 description="Builds the project and then executes the post build run command">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
-            <keyboard-shortcut first-keystroke="control shift S" keymap="$default"/>
+            <keyboard-shortcut first-keystroke="control COMMA" second-keystroke="control K" keymap="$default"/>
         </action>
         <action id="PostBuildPlugin.BuildModuleAndExecute"
                 class="com.github.dshane001.postbuildexecutorplugin.actions.BuildModuleAndExecuteModuleCommand"
                 text="Build Module and Run Command"
                 description="Builds the active module and runs the post action module command">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
-            <keyboard-shortcut first-keystroke="control shift X" keymap="$default"/>
+            <keyboard-shortcut first-keystroke="control COMMA" second-keystroke="control ," keymap="$default"/>
         </action>
         <action id="PostBuildPlugin.BuildFileAndExecute"
                 class="com.github.dshane001.postbuildexecutorplugin.actions.BuildFileAndExecuteFileCommand"
                 text="Recompile File and Run Command"
                 description="Recompiles the current file and runs the post build file command">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
-            <keyboard-shortcut first-keystroke="control shift COMMA" keymap="$default"/>
+            <keyboard-shortcut first-keystroke="control COMMA" second-keystroke="control ." keymap="$default"/>
         </action>
     </actions>
 

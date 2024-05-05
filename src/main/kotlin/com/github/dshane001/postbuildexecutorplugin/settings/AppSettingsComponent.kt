@@ -31,18 +31,18 @@ class AppSettingsComponent {
     var postBuildProjectCommand: String
         get() = postBuildProjectCommandText.text
         set(newText) {
-            postBuildProjectCommandText.setText(newText)
+            postBuildProjectCommandText.text = newText
         }
 
     var postBuildModuleCommand: String
         get() = postBuildModuleCommandText.text
         set(newText) {
-            postBuildModuleCommandText.setText(newText)
+            postBuildModuleCommandText.text = newText
         }
 
     var postBuildFileCommand: String
         get() = postBuildFileCommandText.text
         set(newText) {
-            postBuildFileCommandText.setText(newText)
+            postBuildFileCommandText.text = newText
         }
 }

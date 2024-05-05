@@ -38,22 +38,30 @@ The command will only get executed if the build was triggered by one of these sp
 ## Variable Interpolation
 You can use the following variables in your command (they will be replaced by this plugin):
 
-| Variable     | Description |
-|--------------|-------------|
-| $MODULE_DIR  | The name of the module directory the current active editor or target module points to |
+| Variable     | Description                                                                                 |
+|--------------|---------------------------------------------------------------------------------------------|
+| $MODULE_DIR  | The name of the module directory the current active editor or target module points to       |
 | $MODULE_NAME | The maven name for the module in which the current active editor or target module points to |
 
 ## Default Keymap
 The actions are most useful when invoked via keyboard shortcuts. Here are the default keymaps for the 3 actions:
 
-### Windows
-  - Build Project: <kbd>CTRL-COMMA(,)</kbd> <kbd>CTRL-k</kbd>
-  - Build Module: <kbd>CTRL-COMMA(,)</kbd> <kbd>CTRL-m</kbd>
-  - Build File: <kbd>CTRL-COMMA(,)</kbd> <kbd>CTRL-PERIOD(.)</kbd>
-### Mac
-  - Build Project: <kbd>COMMAND-COMMA(,)</kbd> <kbd>COMMAND-k</kbd>
-  - Build Module: <kbd>COMMAND-COMMA(,)</kbd> <kbd>COMMAND-m</kbd>
-  - Build File: <kbd>COMMAND-COMMA(,)</kbd> <kbd>COMMAND-PERIOD(.)</kbd>
+- Build Project: <kbd>CTRL-COMMA(,)</kbd> <kbd>CTRL-m</kbd>
+- Build Module: <kbd>CTRL-COMMA(,)</kbd> <kbd>CTRL-PERIOD(.)</kbd>
+- Build File: <kbd>CTRL-COMMA(,)</kbd> <kbd>CTRL-COMMA(,)</kbd>
+
+## Icons
+
+Three icons will be added in the toolbar. By default, they will appear as green checkmarks.
+The first icon represents the status of the last Project Build command.
+The second icon represents the status of the last Module Build command.
+The third icon represents the status of the last Recompile File command.
+
+The icons will cycle through these images as the plugin proceeds:
+
+- Orange Hammer: Project is building
+- White Prompt: The shell command is getting executed
+- Red X Mark: The shell command did not execute successfully (the error code was not 0)
 
 <!-- Plugin description end -->
 ---

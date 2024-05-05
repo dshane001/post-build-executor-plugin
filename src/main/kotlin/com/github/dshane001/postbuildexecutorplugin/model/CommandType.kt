@@ -17,11 +17,6 @@ enum class CommandType: CommandString {
         override fun getCommand(): String {
             return settings.postBuildProjectCommand
         }
-    },
-    NONE {
-        override fun getCommand(): String {
-            return ""
-        }
     };
 
     val settings: AppSettingsState = AppSettingsState.getInstance()

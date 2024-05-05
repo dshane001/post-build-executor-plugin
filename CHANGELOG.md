@@ -2,6 +2,16 @@
 
 # post-build-executor-plugin Changelog
 
+## 1.0.7
+- Add compatibility for Intellij 24.1
+- Add icons to the toolbar to show build/execution status
+- Check the error code of the command and show an error icon if unsuccessful
+- Check for empty commands before executing the action
+- Changed hot keys to:
+    - Build Project: CTRL-COMMA(,) CTRL-k
+    - Build Module: CTRL-COMMA(,) CTRL-m
+    - Build File: CTRL-COMMA(,) CTRL-PERIOD(.)
+
 ## 1.0.6
 Updated plugin.xml description
 

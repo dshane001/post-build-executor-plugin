@@ -2,6 +2,11 @@
 
 # post-build-executor-plugin Changelog
 
+## Unreleased
+- Add icons to the toolbar to show build/execution status
+- Check the error code of the command and show an error icon if unsuccessfull
+- Check for empty commands becore executing the action
+
 ## 1.0.6
 Updated plugin.xml description
 

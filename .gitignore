@@ -2,6 +2,7 @@
 .idea
 .qodana
 .github
+.kotlin
 .run
 build
 out

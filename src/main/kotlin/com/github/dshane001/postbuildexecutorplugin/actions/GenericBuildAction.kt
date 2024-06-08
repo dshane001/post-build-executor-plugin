@@ -12,7 +12,7 @@ import com.intellij.openapi.util.IconLoader
 import com.intellij.util.application
 import javax.swing.Icon
 
-open class GenericBuildAction(private val commandType: CommandType, private val pluginId: String): AnAction() {
+open class GenericBuildAction(private val commandType: CommandType): AnAction() {
     private val readyIcon: Icon = IconLoader.getIcon("/icons/checkmark-green-16x16.png", GenericBuildAction::class.java.classLoader)
     private val buildIcon: Icon = IconLoader.getIcon("/icons/hammer-orange-16x16.png", GenericBuildAction::class.java.classLoader)
     private val executingIcon: Icon = IconLoader.getIcon("/icons/arrow-24-white-16x16.png", GenericBuildAction::class.java.classLoader)
@@ -34,11 +34,11 @@ open class GenericBuildAction(private val commandType: CommandType, private val 
     }
 
     override fun actionPerformed(event: AnActionEvent) {
-        thisLogger().info("Event received: $commandType, $pluginId")
+        thisLogger().info("Event received: $commandType")
 
         val project = getEventProject(event) ?: throw IllegalStateException("Project cannot be null")
         val service = project.service<PostBuildExecutorPluginService>()
-        service.processCommand(commandType, pluginId, event, this)
+        service.processCommand(commandType, event, this)
     }
 
     fun setIconToReadyState() {

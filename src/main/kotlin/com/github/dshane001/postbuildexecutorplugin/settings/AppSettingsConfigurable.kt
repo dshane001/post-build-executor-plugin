@@ -33,6 +33,7 @@ class AppSettingsConfigurable : Configurable {
         modified = modified || mySettingsComponent!!.postBuildProjectCommand != settings.postBuildProjectCommand
         modified = modified || mySettingsComponent!!.postBuildModuleCommand != settings.postBuildModuleCommand
         modified = modified || mySettingsComponent!!.postBuildFileCommand != settings.postBuildFileCommand
+        modified = modified || mySettingsComponent!!.commandInterpreter != settings.commandInterpreter
         return modified
     }
 
@@ -41,6 +42,7 @@ class AppSettingsConfigurable : Configurable {
         settings.postBuildProjectCommand = mySettingsComponent!!.postBuildProjectCommand
         settings.postBuildModuleCommand = mySettingsComponent!!.postBuildModuleCommand
         settings.postBuildFileCommand = mySettingsComponent!!.postBuildFileCommand
+        settings.commandInterpreter = mySettingsComponent!!.commandInterpreter
     }
 
     override fun reset() {
@@ -48,6 +50,7 @@ class AppSettingsConfigurable : Configurable {
         mySettingsComponent!!.postBuildProjectCommand = settings.postBuildProjectCommand
         mySettingsComponent!!.postBuildModuleCommand = settings.postBuildModuleCommand
         mySettingsComponent!!.postBuildFileCommand = settings.postBuildFileCommand
+        mySettingsComponent!!.commandInterpreter = settings.commandInterpreter
     }
 
     override fun disposeUIResources() {

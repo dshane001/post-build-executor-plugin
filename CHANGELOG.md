@@ -4,6 +4,7 @@
 
 ## [1.1.0]
 - Added interpreter setting
+- Add $FILE_PATH variable interpolation in commands
 - Added better logging in the Post Build Executor tool window
 
 ## [1.0.9]

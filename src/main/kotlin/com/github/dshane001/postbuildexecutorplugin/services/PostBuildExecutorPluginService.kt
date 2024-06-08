@@ -80,21 +80,20 @@ class PostBuildExecutorPluginService {
             commandOutputConsoleView.printMessage("Running command...\n")
             commandOutputConsoleView.printMessage("$ ")
 
-            val commands: MutableList<String> = mutableListOf()
+            val fullCommand: MutableList<String> = mutableListOf()
             val commandInterpreter = settings.commandInterpreter
             if (commandInterpreter.isNotBlank()) {
-                commands.addAll(settings.commandInterpreter.split(" "))
+                fullCommand.addAll(commandInterpreter.split(" "))
             }
-            commands.add(command!!)
+            fullCommand.add(command!!)
             commandOutputConsoleView.runCommand(
-                commands,
+                fullCommand,
                 onSuccess = {
                     setIconToReadyState()
                 },
                 onError = {
-                    exitCode ->
-                        setIconToErrorState()
-                        commandOutputConsoleView.setFocusOnConsoleView()
+                    setIconToErrorState()
+                    commandOutputConsoleView.setFocusOnConsoleView()
                 },
                 onExit = {
                     action = null
@@ -145,6 +144,12 @@ class PostBuildExecutorPluginService {
             val moduleDirectoryRetrieverService = project.service<ModuleDirectoryRetrieverService>()
             val moduleDir = moduleDirectoryRetrieverService.getModuleDirectory(project) ?: return null
             postBuildCommandString = postBuildCommandString.replace("\$MODULE_DIR", moduleDir)
+        }
+
+        if (postBuildCommandString.contains("\$FILE_PATH")) {
+            val moduleDirectoryRetrieverService = project.service<ModuleDirectoryRetrieverService>()
+            val filePath = moduleDirectoryRetrieverService.getCurrentFocusedEditorFilePath(project) ?: return null
+            postBuildCommandString = postBuildCommandString.replace("\$FILE_PATH", filePath)
         }
 
         return postBuildCommandString

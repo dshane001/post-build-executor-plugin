@@ -1,4 +1,4 @@
-![Build](https://github.com/dshane001/post-build-executor-plugin/workflows/Build/badge.svg)
+l;;;;;;;;;;;;;./![Build](https://github.com/dshane001/post-build-executor-plugin/workflows/Build/badge.svg)
 [![Version](https://img.shields.io/jetbrains/plugin/v/22965-post-build-executor.svg)](https://plugins.jetbrains.com/plugin/22965-post-build-executor)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/22965-post-build-executor.svg)](https://plugins.jetbrains.com/plugin/22965-post-build-executor)
 
@@ -38,10 +38,10 @@ The command will only get executed if the build was triggered by one of these sp
 ## Variable Interpolation
 You can use the following variables in your command (they will be replaced by this plugin):
 
-| Variable     | Description                                                                                 |
-|--------------|---------------------------------------------------------------------------------------------|
-| $MODULE_DIR  | The name of the module directory the current active editor or target module points to       |
-| $MODULE_NAME | The maven name for the module in which the current active editor or target module points to |
+| Variable    | Description                                                                                                  |
+|-------------|--------------------------------------------------------------------------------------------------------------|
+| $MODULE_DIR | The full path of the module directory that corresponds to the currently opened and active/focused editor tab |
+| $FILE_PATH  | The full path of the file that is currently open in the editor                                               |
 
 ## Default Keymap
 The actions are most useful when invoked via keyboard shortcuts. Here are the default keymaps for the 3 actions:
@@ -62,6 +62,10 @@ The icons will cycle through these images as the plugin proceeds:
 - Orange Hammer: Project is building
 - White Prompt: The shell command is getting executed
 - Red X Mark: The shell command did not execute successfully (the error code was not 0)
+
+## New Tool Window
+
+If there is a script execution error, you can open the "Post Build Executor" tool window to see the execution of the script.
 
 <!-- Plugin description end -->
 ---

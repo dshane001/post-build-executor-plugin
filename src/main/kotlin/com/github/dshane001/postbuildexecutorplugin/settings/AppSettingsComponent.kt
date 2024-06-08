@@ -15,12 +15,14 @@ class AppSettingsComponent {
     private val postBuildProjectCommandText = JBTextField()
     private val postBuildModuleCommandText = JBTextField()
     private val postBuildFileCommandText = JBTextField()
+    private val commandInterpreterText = JBTextField()
 
     init {
         myMainPanel = FormBuilder.createFormBuilder()
             .addLabeledComponent(JBLabel("Command to execute post build (Project): "), postBuildProjectCommandText, 1, true)
             .addLabeledComponent(JBLabel("Command to execute post build (Module): "), postBuildModuleCommandText, 1, true)
             .addLabeledComponent(JBLabel("Command to execute post build (File): "), postBuildFileCommandText, 1, true)
+            .addLabeledComponent(JBLabel("Command interpreter"), commandInterpreterText, 1, true)
             .addComponentFillVertically(JPanel(), 0)
             .panel
     }
@@ -45,4 +47,11 @@ class AppSettingsComponent {
         set(newText) {
             postBuildFileCommandText.text = newText
         }
+
+    var commandInterpreter: String
+        get() = commandInterpreterText.text
+        set(newText) {
+            commandInterpreterText.text = newText
+        }
+
 }

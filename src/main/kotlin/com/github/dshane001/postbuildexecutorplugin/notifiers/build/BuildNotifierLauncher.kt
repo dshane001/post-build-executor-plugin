@@ -3,7 +3,6 @@ package com.github.dshane001.postbuildexecutorplugin.notifiers.build
 import com.github.dshane001.postbuildexecutorplugin.model.BuildStatus
 import com.github.dshane001.postbuildexecutorplugin.services.PostBuildExecutorPluginService
 import com.intellij.openapi.components.service
-import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.project.Project
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -18,23 +17,7 @@ class BuildNotifierLauncher: BuildNotifier {
     }
 
     private fun runAction(buildStatus: BuildStatus, project: Project) {
-        val service = project.service<PostBuildExecutorPluginService>()
-        thisLogger().info("Build status: $buildStatus")
-
-        when (buildStatus) {
-            BuildStatus.STARTED -> {
-                service.setIconToBuildState()
-            }
-            BuildStatus.SUCCESS -> {
-                service.setIconToExecutingState()
-                service.executeCommandInTerminal(project)
-            }
-            BuildStatus.ERROR -> {
-                service.setIconToErrorState()
-            }
-            BuildStatus.CANCELLED -> {
-                service.setIconToReadyState()
-            }
-        }
+        val postBuildExecutorPluginService = project.service<PostBuildExecutorPluginService>()
+        postBuildExecutorPluginService.buildFinished(project, buildStatus)
     }
 }

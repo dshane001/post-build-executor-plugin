@@ -14,6 +14,10 @@
                                  id="com.github.dshane001.testtemplate.settings.AppSettingsConfigurable"
                                  displayName="Post Build Executor"/>
         <applicationService serviceImplementation="com.github.dshane001.postbuildexecutorplugin.settings.AppSettingsState"/>
+        <toolWindow id="Post Build Executor"
+                    icon="AllIcons.Toolwindows.WebToolWindow"
+                    anchor="bottom"
+                    factoryClass="com.github.dshane001.postbuildexecutorplugin.toolwindow.PostBuildExecutorCommandOutputWindowFactory"/>
     </extensions>
 
     <projectListeners>
@@ -29,6 +33,7 @@
                 description="Builds the project and then executes the post build run command">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
             <add-to-group group-id="ToolbarRunGroup" anchor="last"/>
+            <add-to-group group-id="MainToolbarRight" anchor="last"/>
             <keyboard-shortcut first-keystroke="control COMMA" second-keystroke="control m" keymap="$default"/>
         </action>
         <action id="PostBuildPlugin.BuildModuleAndExecute"
@@ -37,6 +42,7 @@
                 description="Builds the active module and runs the post action module command">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
             <add-to-group group-id="ToolbarRunGroup" anchor="last"/>
+            <add-to-group group-id="MainToolbarRight" anchor="last"/>
             <keyboard-shortcut first-keystroke="control COMMA" second-keystroke="control COMMA" keymap="$default"/>
         </action>
         <action id="PostBuildPlugin.BuildFileAndExecute"
@@ -45,6 +51,7 @@
                 description="Recompiles the current file and runs the post build file command">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
             <add-to-group group-id="ToolbarRunGroup" anchor="last"/>
+            <add-to-group group-id="MainToolbarRight" anchor="last"/>
             <keyboard-shortcut first-keystroke="control COMMA" second-keystroke="control PERIOD" keymap="$default"/>
         </action>
     </actions>

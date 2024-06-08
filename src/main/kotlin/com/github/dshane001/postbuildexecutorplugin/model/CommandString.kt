@@ -1,5 +1,9 @@
 package com.github.dshane001.postbuildexecutorplugin.model
 
-fun interface CommandString {
+import com.intellij.openapi.project.Project
+
+interface CommandString {
     fun getCommand(): String
+    fun getBuildActionName(): String
+    fun triggerBuild(project: Project)
 }

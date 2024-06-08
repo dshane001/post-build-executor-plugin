@@ -1,4 +1,7 @@
 .gradle
 .idea
 .qodana
+.github
+.run
 build
+out

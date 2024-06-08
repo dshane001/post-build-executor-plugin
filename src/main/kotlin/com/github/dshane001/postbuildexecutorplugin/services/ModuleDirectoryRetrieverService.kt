@@ -8,20 +8,13 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.roots.ModuleRootManager
 import com.intellij.openapi.ui.Messages
 import com.intellij.openapi.vfs.VirtualFile
+import org.jetbrains.annotations.NonNls
 
 @Service(Service.Level.PROJECT)
 class ModuleDirectoryRetrieverService {
     fun getModuleDirectory(project: Project): String? {
         // Get the current file from the editor
-        val fileEditorManager = FileEditorManager.getInstance(project)
-        val currentFile: VirtualFile = fileEditorManager.selectedFiles.firstOrNull() ?: run {
-            Messages.showErrorDialog(
-                project,
-                "Cannot get module directory of the currently opened editor file, no file is currently selected. Please open a file in the main editor before performing this action.",
-                "PostBuildExecutorPlugin Error"
-            )
-            return null
-        }
+        val currentFile: VirtualFile = getCurrentFocusedEditorFile(project) ?: return null
 
         // Find the module for the current file
         val module: Module = ModuleUtil.findModuleForFile(currentFile, project) ?: run {
@@ -59,4 +52,25 @@ class ModuleDirectoryRetrieverService {
 
         return moduleBaseDir.path
     }
+
+    fun getCurrentFocusedEditorFilePath(project: Project): @NonNls String? {
+        // Get the current file from the editor
+        return getCurrentFocusedEditorFile(project)?.path
+    }
+
+    private fun getCurrentFocusedEditorFile(project: Project): VirtualFile? {
+        // Get the current file from the editor
+        val fileEditorManager = FileEditorManager.getInstance(project)
+        val currentFile: VirtualFile = fileEditorManager.selectedFiles.firstOrNull() ?: run {
+            Messages.showErrorDialog(
+                project,
+                "Cannot get module directory of the currently opened editor file, no file is currently selected. Please open a file in the main editor before performing this action.",
+                "PostBuildExecutorPlugin Error"
+            )
+            return null
+        }
+        return currentFile
+    }
+
+
 }

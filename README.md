@@ -38,9 +38,10 @@ The command will only get executed if the build was triggered by one of these sp
 ## Variable Interpolation
 You can use the following variables in your command (they will be replaced by this plugin):
 
-| Variable     | Description                                                                                                  |
-|--------------|--------------------------------------------------------------------------------------------------------------|
-| $MODULE_DIR  | The full path of the module directory that corresponds to the currently opened and active/focused editor tab |
+| Variable    | Description                                                                                                  |
+|-------------|--------------------------------------------------------------------------------------------------------------|
+| $MODULE_DIR | The full path of the module directory that corresponds to the currently opened and active/focused editor tab |
+| $FILE_PATH  | The full path of the file that is currently open in the editor                                               |
 
 ## Default Keymap
 The actions are most useful when invoked via keyboard shortcuts. Here are the default keymaps for the 3 actions:

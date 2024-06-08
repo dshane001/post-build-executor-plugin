@@ -14,6 +14,7 @@ class AppSettingsState : PersistentStateComponent<AppSettingsState?> {
     var postBuildProjectCommand = ""
     var postBuildModuleCommand = ""
     var postBuildFileCommand = ""
+    var commandInterpreter = "/usr/bin/bash -c"
 
     override fun getState(): AppSettingsState {
         return this

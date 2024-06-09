@@ -72,5 +72,7 @@ class ModuleDirectoryRetrieverService {
         return currentFile
     }
 
-
+    fun add(int1: Int, int2: Int): Int {
+        return int1 + int2;
+    }
 }

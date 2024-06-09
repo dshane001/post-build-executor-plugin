@@ -19,11 +19,15 @@ version = properties("pluginVersion").get()
 // Configure project's dependencies
 repositories {
     mavenCentral()
+    mavenLocal()
+    maven("https://oss.sonatype.org/content/repositories/snapshots")
 }
 
 // Dependencies are managed with Gradle version catalog - read more: https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog
 dependencies {
-//    implementation(libs.annotations)
+    testImplementation(libs.kotest.runner.junit5)
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotest.property)
 }
 
 // Set the JVM language level used to build the project.
@@ -67,6 +71,16 @@ kover {
 }
 
 tasks {
+    test {
+        useJUnitPlatform()
+        testLogging {
+            showExceptions = true
+            showStandardStreams = true
+            events("passed", "skipped", "failed")
+            exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+        }
+    }
+
     wrapper {
         gradleVersion = properties("gradleVersion").get()
     }

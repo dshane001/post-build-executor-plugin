@@ -1,4 +1,3 @@
-import org.gradle.internal.impldep.org.testng.reporters.XMLUtils.xml
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
 

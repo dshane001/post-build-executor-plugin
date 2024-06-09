@@ -71,6 +71,4 @@ class ModuleDirectoryRetrieverService {
         }
         return currentFile
     }
-
-
 }

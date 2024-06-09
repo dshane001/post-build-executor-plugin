@@ -1,7 +1,6 @@
 .gradle
 .idea
 .qodana
-.github
 .kotlin
 .run
 build

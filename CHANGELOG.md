@@ -1,6 +1,7 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
 # post-build-executor-plugin Changelog
+## [Unreleased]
 
 ## [1.1.0]
 - Added interpreter setting

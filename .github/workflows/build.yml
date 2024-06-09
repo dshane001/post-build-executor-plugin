@@ -171,7 +171,6 @@ jobs:
         with:
           cache-default-branch-only: true
           upload-result: true
-          token: ${{ secrets.QODANA_TOKEN }}
 
   # Run plugin structure verification along with IntelliJ Plugin Verifier
   verify:
@@ -201,8 +200,6 @@ jobs:
       # Setup Gradle
       - name: Setup Gradle
         uses: gradle/actions/wrapper-validation@v3
-        with:
-          gradle-home-cache-cleanup: true
 
       # Cache Plugin Verifier IDEs
       - name: Setup Plugin Verifier IDEs Cache

@@ -17,4 +17,4 @@ class PostBuildExecutorCommandOutputWindowFactory: ToolWindowFactory, DumbAware 
     }
 }
 
-val POST_BUILD_EXECUTOR_TOOL_NAME: String = "Post Build Executor"
+const val POST_BUILD_EXECUTOR_TOOL_NAME: String = "Post Build Executor"

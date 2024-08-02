@@ -9,7 +9,7 @@ gradleIntelliJPlugin = "1.17.3"
 qodana = "0.1.13"
 kover = "0.8.3"
 kotest = "5.9.1"
-mockk = "1.13.11"
+mockk = "1.13.12"
 
 [libraries]
 annotations = { group = "org.jetbrains", name = "annotations", version.ref = "annotations" }

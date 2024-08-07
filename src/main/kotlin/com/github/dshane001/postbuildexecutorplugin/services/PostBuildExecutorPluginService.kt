@@ -29,7 +29,6 @@ class PostBuildExecutorPluginService {
 
         try {
             commandOutputConsoleView.clear()
-            commandOutputConsoleView.printMessage("Triggering Intellij Build Type: %s\n".format(commandType.getBuildActionName()))
             val originalCommand = getCommand(project, commandType) ?: run {
                 commandOutputConsoleView.printError("Could not get the Command to execute, bailing out.")
                 return
@@ -47,11 +46,7 @@ class PostBuildExecutorPluginService {
     }
 
     fun buildFinished(project: Project, buildStatus: BuildStatus) {
-        val commandOutputConsoleView = CommandOutputConsoleView(project)
-        commandOutputConsoleView.printMessage("  -> Build Status: $buildStatus\n")
-
         if (action == null) {
-            commandOutputConsoleView.printError("No action found, could not execute the command.")
             return
         }
 

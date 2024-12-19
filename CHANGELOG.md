@@ -3,6 +3,9 @@
 # post-build-executor-plugin Changelog
 ## [Unreleased]
 
+## [1.1.2]
+- Added support for Intellij 2024.3
+
 ## [1.1.0]
 - Added interpreter setting
 - Add $FILE_PATH variable interpolation in commands
